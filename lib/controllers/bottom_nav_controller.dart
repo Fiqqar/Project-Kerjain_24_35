@@ -1,15 +1,19 @@
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
+import 'package:kerjain/pages/history_page.dart';
+import 'package:kerjain/pages/home_page.dart';
+import 'package:kerjain/pages/user_profile_page.dart';
 
 class BottomNavController extends GetxController {
-  var currIndex = 0.obs;
+  var selectedIndex = 0.obs;
 
-  // final List<String> pages = [
-  //   HomePage(),
-  //   HistoryPage(),
-  //   ProfilePage(),
-  // ];
+  final List<Widget> pages = [
+    HomePage(),
+    HistoryPage(),
+    UserProfilePage(),
+  ];
 
-  void changePage(int index) {
-    currIndex.value = index;
+  void changeIndex(int index) {
+    selectedIndex.value = index;
   }
 }
