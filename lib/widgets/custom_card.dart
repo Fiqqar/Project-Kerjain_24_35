@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:kerjain/colors/app_colors.dart';
 
 class CustomCard extends StatelessWidget{
 
@@ -11,7 +12,7 @@ class CustomCard extends StatelessWidget{
     super.key,
     required this.child,
     this.padding = const EdgeInsets.all(16.0),
-    this.color = const Color(0xFFFFFFFF),
+    this.color = ColorPalette.backgroundColor,
     this.borderRadius = 8.0,
   });
 
@@ -24,7 +25,7 @@ class CustomCard extends StatelessWidget{
         borderRadius: BorderRadius.circular(borderRadius),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF000000),
+            color: ColorPalette.shadowColor,
             offset: const Offset(0, 2),
           ),
         ],
