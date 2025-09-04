@@ -17,7 +17,6 @@ class CustomText extends StatelessWidget{
     return Text(
       text,
       style: style,
-      
     );
   }
 }
