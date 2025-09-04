@@ -1,5 +1,6 @@
 
 import 'package:get/get.dart';
+import 'package:kerjain/bindings/auth_binding.dart';
 import 'package:kerjain/pages/add_todo_page.dart';
 import 'package:kerjain/pages/bottom_nav.dart';
 import 'package:kerjain/pages/history_page.dart';
@@ -15,6 +16,6 @@ class AppPage{
     GetPage(name: AppRoutes.history, page: () =>  HistoryPage()),
     GetPage(name: AppRoutes.userProfile, page: () =>  UserProfilePage()),
     GetPage(name: AppRoutes.bottomNav, page: () =>  BottomNav()),
-    GetPage(name: AppRoutes.login, page: () =>  LoginPage()),
+    GetPage(name: AppRoutes.login, page: () =>  LoginPage(), binding: AuthBinding()),
   ];
 }
