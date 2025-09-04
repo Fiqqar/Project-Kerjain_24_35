@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:kerjain/colors/app_colors.dart';
 
 class CustomText extends StatelessWidget{
 
@@ -8,8 +9,7 @@ class CustomText extends StatelessWidget{
   const CustomText({
     super.key,
     required this.text,
-    this.style = const TextStyle(fontSize: 16.0, color: Color(0xFF000000)),
-    
+    this.style = const TextStyle(fontSize: 16.0, color: ColorPalette.shadowColor),
   });
 
   @override
@@ -17,7 +17,6 @@ class CustomText extends StatelessWidget{
     return Text(
       text,
       style: style,
-      
     );
   }
 }
