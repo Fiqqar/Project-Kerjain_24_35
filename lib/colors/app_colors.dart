@@ -11,4 +11,7 @@ class ColorPalette {
   static const Color textColor = Color(0xFF333333);
   static const Color shadowColor = Color(0xFF000000);
   static const Color transparent = Colors.transparent;
+  static const Color r = Colors.red;
+  static const Color g = Colors.green;
+  static const Color b = Colors.blue;
 }

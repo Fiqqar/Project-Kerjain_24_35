@@ -9,6 +9,7 @@ class CustomCard extends StatelessWidget {
   final double elevation;
   final List<BoxShadow>? customShadow;
   final double topRadius;
+  final double bottomRadius;
   final double? height;
   final double width;  
 
@@ -16,13 +17,14 @@ class CustomCard extends StatelessWidget {
     super.key,
     required this.child,
     this.padding = const EdgeInsets.all(24.0),
-    this.color = Colors.white,
+    this.color = ColorPalette.backgroundColor,
     this.hasShadow = true,
     this.elevation = 8.0,
     this.customShadow,
+    this.bottomRadius = 0.0,
     this.topRadius = 20.0,
     this.width = double.infinity,
-    this.height,
+    this.height, 
   });
 
   @override
@@ -36,6 +38,8 @@ class CustomCard extends StatelessWidget {
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(topRadius),
           topRight: Radius.circular(topRadius),
+          bottomLeft: Radius.circular(bottomRadius),
+          bottomRight: Radius.circular(bottomRadius),
         ),
         boxShadow: hasShadow
             ? customShadow ??
