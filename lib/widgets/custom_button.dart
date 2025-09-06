@@ -48,3 +48,44 @@ class CustomButton extends StatelessWidget {
     );
   }
 }
+
+class CustomFloatingButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final IconData icon;
+  final Color backgroundColor;
+  final Color iconColor;
+  final double size;
+  final double borderRadius;
+
+  const CustomFloatingButton({
+    super.key,
+    required this.onPressed,
+    this.icon = Icons.add,
+    this.backgroundColor = Colors.blue,
+    this.iconColor = Colors.white,
+    this.size = 56.0,
+    this.borderRadius = 15.0,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: backgroundColor,
+      borderRadius: BorderRadius.circular(borderRadius),
+      elevation: 6,
+      child: InkWell(
+        onTap: onPressed,
+        borderRadius: BorderRadius.circular(borderRadius),
+        child: SizedBox(
+          width: size,
+          height: size,
+          child: Icon(
+            icon,
+            color: iconColor,
+            size: size * 0.5,
+          ),
+        ),
+      ),
+    );
+  }
+}
