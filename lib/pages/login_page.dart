@@ -8,12 +8,12 @@ import 'package:kerjain/widgets/custom_text.dart';
 import 'package:kerjain/widgets/custom_txtfield.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
+
+  final loginController = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
-    final loginController = Get.find<AuthController>();
-
     return Scaffold(
       backgroundColor: ColorPalette.backgroundColor,
       body: Column(

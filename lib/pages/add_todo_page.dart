@@ -67,7 +67,7 @@ class AddTodoPage extends StatelessWidget {
               Obx(
                 () => Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  spacing: 2,
+                  spacing: 10,
                   children: [
                     CustomRadio(
                       value: "Sekolah",

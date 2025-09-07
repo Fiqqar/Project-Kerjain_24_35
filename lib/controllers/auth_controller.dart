@@ -18,10 +18,19 @@ class AuthController extends GetxController {
     } 
     else {
       Get.snackbar('Error', 'Email atau Password salah!');
+      emailController.clear();
+      passController.clear();
     }
   }
 
   void logout() {
     Get.snackbar('Berhasil', 'Log out berhasil!');
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+    emailController.dispose();
+    passController.dispose();
   }
 }
