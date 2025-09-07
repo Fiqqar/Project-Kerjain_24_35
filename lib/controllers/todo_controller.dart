@@ -6,6 +6,7 @@ import 'package:kerjain/model/todo_model.dart';
 
 class TodoController extends GetxController {
   var todos = <TodoModel>[].obs;
+  var history = <TodoModel>[].obs;
 
   @override
   void onInit() {
@@ -55,11 +56,14 @@ class TodoController extends GetxController {
     "Pribadi": ColorPalette.g,
     "Pekerjaan": ColorPalette.r,
   };
+  
   getCategoryColor(String kategori) {
     return categoryColors[kategori] ?? ColorPalette.textColor;
   }
 
   void deleteTodo(int index) {
+    history.add(todos[index]);
+    todos[index].completedAt = DateTime.now();
     todos.removeAt(index);
   }
 }
