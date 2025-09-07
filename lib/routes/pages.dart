@@ -1,5 +1,6 @@
 
 import 'package:get/get.dart';
+import 'package:kerjain/bindings/add_todo_binding.dart';
 import 'package:kerjain/bindings/auth_binding.dart';
 import 'package:kerjain/bindings/bottom_nav_binding.dart';
 import 'package:kerjain/pages/add_todo_page.dart';
@@ -13,7 +14,7 @@ import 'package:kerjain/routes/routes.dart';
 class AppPage{
   static final pages = [
     GetPage(name: AppRoutes.home, page: () =>  HomePage()),
-    GetPage(name: AppRoutes.addTodo, page: () =>  AddTodoPage()),
+    GetPage(name: AppRoutes.addTodo, page: () =>  AddTodoPage(), binding: AddTodoBinding()),
     GetPage(name: AppRoutes.history, page: () =>  HistoryPage()),
     GetPage(name: AppRoutes.userProfile, page: () =>  UserProfilePage()),
     GetPage(name: AppRoutes.bottomNav, page: () =>  BottomNav(), binding: BottomNavBinding()),

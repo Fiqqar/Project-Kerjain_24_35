@@ -29,24 +29,39 @@ class HomePage extends StatelessWidget {
               right: 16,
               bottom: 16,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                CustomText(
-                  text: "Beranda",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: ColorPalette.backgroundColor,
-                  ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomText(
+                      text: "Beranda",
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      textColor: ColorPalette.backgroundColor,
+                    ),
+                    const SizedBox(height: 4),
+                    CustomText(
+                      text: "Selamat datang kembali, Fiqar!",
+                      fontSize: 14,
+                      textColor: ColorPalette.backgroundColor.withValues(
+                        alpha: 0.7,
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 4),
-                CustomText(
-                  text: "Selamat datang kembali, Fiqar!",
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: ColorPalette.backgroundColor.withValues(alpha: 0.7),
-                  ),
+
+                CustomFloatingButton(
+                  backgroundColor: ColorPalette.accentColor,
+                  iconColor: Colors.white,
+                  borderRadius: 12,
+                  size: 45,
+                  icon: Icons.add,
+                  onPressed: () {
+                    Get.toNamed(AppRoutes.addTodo);
+                  },
                 ),
               ],
             ),
@@ -68,6 +83,10 @@ class HomePage extends StatelessWidget {
                       topRadius: 15,
                       bottomRadius: 15,
                       child: ListTile(
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 2,
+                        ),
                         leading: Checkbox(
                           value: todo.isCompleted,
                           activeColor: ColorPalette.accentColor,
@@ -80,43 +99,47 @@ class HomePage extends StatelessWidget {
                             todoController.toggleCompleted(index);
                           },
                         ),
-                        title: Text(
-                          todo.namaTodo,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            decoration: todo.isCompleted
-                                ? TextDecoration.lineThrough
-                                : TextDecoration.none,
-                          ),
+                        title: CustomText(
+                          text: todo.namaTodo,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          isLineThrough: todo.isCompleted,
                         ),
                         subtitle: CustomText(
                           text: todo.deskripsiTodo,
-                          style: TextStyle(
-                            color: ColorPalette.textColor.withValues(
-                              alpha: 0.7,
-                            ),
-                            fontSize: 13,
+                          fontSize: 13,
+                          textColor: ColorPalette.textColor.withValues(
+                            alpha: 0.7,
                           ),
                         ),
-                        trailing: Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: todoController.getCategoryColor(
-                              todo.kategori,
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 4,
+                              ),
+                              decoration: BoxDecoration(
+                                color: todoController.getCategoryColor(
+                                  todo.kategori,
+                                ),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: CustomText(
+                                text: todo.kategori,
+                                textColor: ColorPalette.backgroundColor,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: CustomText(
-                            text: todo.kategori,
-                            style: TextStyle(
-                              color: ColorPalette.backgroundColor,
-                              fontWeight: FontWeight.bold,
+                            const SizedBox(width: 8),
+                            IconButton(
+                              icon: Icon(Icons.delete, color: Colors.red),
+                              onPressed: () {
+                                todoController.deleteTodo(index);
+                              },
                             ),
-                          ),
+                          ],
                         ),
                       ),
                     ),
@@ -126,17 +149,6 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ],
-      ),
-
-      floatingActionButton: CustomFloatingButton(
-        backgroundColor: ColorPalette.primaryColor,
-        iconColor: Colors.white,
-        borderRadius: 15,
-        size: 60,
-        icon: Icons.add,
-        onPressed: () {
-          Get.toNamed(AppRoutes.addTodo);
-        },
       ),
     );
   }

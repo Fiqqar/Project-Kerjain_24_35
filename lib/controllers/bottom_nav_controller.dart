@@ -7,11 +7,7 @@ import 'package:kerjain/pages/user_profile_page.dart';
 class BottomNavController extends GetxController {
   var selectedIndex = 0.obs;
 
-  final List<Widget> pages = [
-    HomePage(),
-    HistoryPage(),
-    UserProfilePage(),
-  ];
+  final List<Widget> pages = [HomePage(), HistoryPage(), UserProfilePage()];
 
   void changeIndex(int index) {
     selectedIndex.value = index;

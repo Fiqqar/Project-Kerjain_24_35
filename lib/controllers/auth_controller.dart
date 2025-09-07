@@ -11,17 +11,17 @@ class AuthController extends GetxController {
 
 
   void login() {
-    if (emailController.text == email && passController.text == pass) {
+    if (emailController.text == email && passController.text == pass ) {
       Get.snackbar('Berhasil', 'Login Berhasil!');
       Get.offAllNamed(AppRoutes.bottomNav);
   
-    } else {
+    } 
+    else {
       Get.snackbar('Error', 'Email atau Password salah!');
     }
   }
 
   void logout() {
     Get.snackbar('Berhasil', 'Log out berhasil!');
-  // Get.offAllNamed('/login');
   }
 }

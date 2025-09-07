@@ -7,6 +7,8 @@ class CustomTxtfield extends StatelessWidget {
   final bool obscureText;
   final Color borderColor;     
   final Color focusedBorderColor; 
+  final Color hintTextColor;
+  final Color textColor;
 
   const CustomTxtfield({
     super.key,
@@ -15,15 +17,20 @@ class CustomTxtfield extends StatelessWidget {
     this.obscureText = false,
     this.borderColor = ColorPalette.backgroundColor, 
     this.focusedBorderColor = ColorPalette.primaryGradientColor,
+    this.hintTextColor = ColorPalette.backgroundColor,
+    this.textColor = ColorPalette.backgroundColor,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
-      obscureText: obscureText,
+      obscureText: obscureText, 
+      style: TextStyle(color: textColor),
       decoration: InputDecoration(
+        
         hintText: hintText,
+        hintStyle: TextStyle(color: hintTextColor),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
           borderSide: BorderSide(color: borderColor, width: 1.5),

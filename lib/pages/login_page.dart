@@ -26,13 +26,11 @@ class LoginPage extends StatelessWidget {
           const SizedBox(height: 16),
           CustomText(
             text: "Kerjain",
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: ColorPalette.primaryColor,
-            ),
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            textColor: ColorPalette.primaryColor,
           ),
-          const Spacer(),
+          Spacer(),
           Align(
             alignment: Alignment.bottomCenter,
             child: CustomCard(
@@ -44,21 +42,25 @@ class LoginPage extends StatelessWidget {
                 children: [
                   CustomText(
                     text: "Selamat Datang Kembali!",
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: ColorPalette.backgroundColor,
-                    ),
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    textColor: ColorPalette.backgroundColor,
                   ),
                   const SizedBox(height: 25),
                   CustomTxtfield(
                     controller: loginController.emailController,
                     hintText: "Email",
+                    hintTextColor: ColorPalette.backgroundColor.withValues(
+                      alpha: 0.7,
+                    ),
                   ),
                   const SizedBox(height: 12),
                   CustomTxtfield(
                     controller: loginController.passController,
                     hintText: "Password",
+                    hintTextColor: ColorPalette.backgroundColor.withValues(
+                      alpha: 0.7,
+                    ),
                     obscureText: true,
                   ),
                   const SizedBox(height: 30),
