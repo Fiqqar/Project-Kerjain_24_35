@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kerjain/controllers/todo_controller.dart';
+import 'package:kerjain/model/todo_model.dart';
+
+class AddTodoController extends GetxController {
+  final namaController = TextEditingController();
+  final deskripsiController = TextEditingController();
+
+  var selectedKategori = "".obs;
+
+  final TodoController todoController = Get.find<TodoController>();
+
+  void setKategori(String kategori) {
+    selectedKategori.value = kategori;
+  }
+
+  void addTodo() {
+    if (namaController.text.isEmpty || selectedKategori.value.isEmpty) {
+      Get.snackbar(
+        "Error",
+        "Nama kegiatan dan kategori wajib diisi!",
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      return;
+    }
+
+    todoController.todos.add(
+      TodoModel(
+        namaTodo: namaController.text,
+        deskripsiTodo: deskripsiController.text,
+        kategori: selectedKategori.value,
+      ),
+    );
+    Get.back();
+    Get.snackbar(
+      "Berhasil",
+      "Kegiatan berhasil ditambahkan!",
+      snackPosition: SnackPosition.BOTTOM,
+    );
+  }
+
+  void clearFields() {
+    namaController.clear();
+    deskripsiController.clear();
+    selectedKategori.value = "";
+  }
+
+  @override
+  void onClose() {
+    namaController.dispose();
+    deskripsiController.dispose();
+    super.onClose();
+  }
+}

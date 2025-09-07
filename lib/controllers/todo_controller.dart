@@ -41,7 +41,7 @@ class TodoController extends GetxController {
         namaTodo: "Meeting dengan client",
         deskripsiTodo: "ACC BOSQUE",
         kategori: "Pekerjaan",
-      ),  
+      ),
     ]);
   }
 
@@ -57,5 +57,9 @@ class TodoController extends GetxController {
   };
   getCategoryColor(String kategori) {
     return categoryColors[kategori] ?? ColorPalette.textColor;
+  }
+
+  void deleteTodo(int index) {
+    todos.removeAt(index);
   }
 }

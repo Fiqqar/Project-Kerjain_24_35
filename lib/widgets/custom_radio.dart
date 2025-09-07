@@ -21,30 +21,23 @@ class CustomRadio extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => onChanged(value),
-      borderRadius: BorderRadius.circular(8), 
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        margin: const EdgeInsets.symmetric(vertical: 4),
-        decoration: BoxDecoration(
-          color: selected ? ColorPalette.primaryColorShade100 : ColorPalette.transparent,
-          border: Border.all(
-            color: selected ? ColorPalette.primaryColor : ColorPalette.backgroundColor,
-          ),
-          borderRadius: BorderRadius.circular(8),
-        ),
+      borderRadius: BorderRadius.circular(8),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 4.0),
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Radio<String>(
               value: value,
               groupValue: groupValue,
               onChanged: onChanged,
-              activeColor: ColorPalette.accentColor, 
+              activeColor: ColorPalette.accentColor,
             ),
             Text(
               label,
               style: TextStyle(
                 fontWeight: selected ? FontWeight.bold : FontWeight.normal,
-                color: selected ? ColorPalette.textColor :ColorPalette.textColor,
+                color: ColorPalette.textColor,
               ),
             ),
           ],
