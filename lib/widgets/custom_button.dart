@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kerjain/colors/app_colors.dart';
 
 class CustomButton extends StatelessWidget {
   final String label;
@@ -10,19 +11,18 @@ class CustomButton extends StatelessWidget {
   final FontWeight fontWeight;
   final double? width;
   final double? height;
-  
-  
+
   const CustomButton({
     super.key,
     required this.label,
     required this.onPressed,
     required this.color,
     this.borderRadius = 15.0,
-    this.textColor = Colors.white,
+    this.textColor = ColorPalette.backgroundColor,
     this.fontSize = 16.0,
     this.fontWeight = FontWeight.w600,
     this.width,
-    this.height = 48.0,  
+    this.height = 48.0,
   });
 
   @override
@@ -38,7 +38,7 @@ class CustomButton extends StatelessWidget {
       ),
       child: Text(
         label,
-        
+
         style: TextStyle(
           color: textColor,
           fontSize: fontSize,
@@ -61,8 +61,8 @@ class CustomFloatingButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     this.icon = Icons.add,
-    this.backgroundColor = Colors.blue,
-    this.iconColor = Colors.white,
+    this.backgroundColor = ColorPalette.primaryColor,
+    this.iconColor = ColorPalette.backgroundColor,
     this.size = 56.0,
     this.borderRadius = 15.0,
   });
@@ -79,11 +79,7 @@ class CustomFloatingButton extends StatelessWidget {
         child: SizedBox(
           width: size,
           height: size,
-          child: Icon(
-            icon,
-            color: iconColor,
-            size: size * 0.5,
-          ),
+          child: Icon(icon, color: iconColor, size: size * 0.5),
         ),
       ),
     );

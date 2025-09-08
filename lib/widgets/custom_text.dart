@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:kerjain/colors/app_colors.dart';
 
 class CustomText extends StatelessWidget {
@@ -8,7 +9,7 @@ class CustomText extends StatelessWidget {
   final FontWeight fontWeight;
   final double fontSize;
   final TextAlign textAlign;
-  final bool isLineThrough; // 🔥 tambahan khusus
+  final bool isLineThrough;
 
   const CustomText({
     super.key,
@@ -31,8 +32,28 @@ class CustomText extends StatelessWidget {
         color: textColor,
         fontWeight: fontWeight,
         fontSize: fontSize,
-        decoration: isLineThrough ? TextDecoration.lineThrough : TextDecoration.none,
+        decoration: isLineThrough
+            ? TextDecoration.lineThrough
+            : TextDecoration.none,
       ),
     );
   }
+}
+
+Widget buildInfoRow(String label, String value) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8.0),
+    child: Row(
+      children: [
+        Expanded(
+          child: CustomText(
+            text: "$label: $value",
+            fontSize: 16,
+            textColor: ColorPalette.textColor,
+          ),
+        ),
+        Icon(Icons.edit, size: 18, color: ColorPalette.accentColor),
+      ],
+    ),
+  );
 }
