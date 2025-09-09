@@ -32,7 +32,7 @@ class UserProfilePage extends StatelessWidget {
                   CircleAvatar(
                     radius: 40,
                     backgroundImage: AssetImage(
-                      "assets/images/placeholder.jpg",
+                      "assets/images/fiqar.png",
                     ),
                     backgroundColor: ColorPalette.backgroundColor,
                   ),
