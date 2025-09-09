@@ -4,9 +4,9 @@ import 'package:kerjain/colors/app_colors.dart';
 
 import 'package:kerjain/controllers/addtodo_controller.dart';
 import 'package:kerjain/widgets/custom_button.dart';
+import 'package:kerjain/widgets/custom_dropdown.dart';
 import 'package:kerjain/widgets/custom_text.dart';
 import 'package:kerjain/widgets/custom_txtfield.dart';
-import 'package:kerjain/widgets/custom_radio.dart';
 import 'package:kerjain/widgets/custom_card.dart';
 
 class AddTodoPage extends StatelessWidget {
@@ -29,7 +29,7 @@ class AddTodoPage extends StatelessWidget {
         backgroundColor: ColorPalette.primaryColor,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(8),
+        padding:  EdgeInsets.all(8),
         child: CustomCard(
           hasShadow: false,
           color: ColorPalette.primaryColorShade100,
@@ -65,31 +65,18 @@ class AddTodoPage extends StatelessWidget {
                 textColor: ColorPalette.textColor,
               ),
               Obx(
-                () => Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  spacing: 10,
-                  children: [
-                    CustomRadio(
-                      value: "Sekolah",
-                      groupValue: addTodoController.selectedKategori.value,
-                      label: "Sekolah",
-                      onChanged: (val) => addTodoController.setKategori(val!),
-                    ),
-                    CustomRadio(
-                      value: "Pribadi",
-                      groupValue: addTodoController.selectedKategori.value,
-                      label: "Pribadi",
-                      onChanged: (val) => addTodoController.setKategori(val!),
-                    ),
-                    CustomRadio(
-                      value: "Pekerjaan",
-                      groupValue: addTodoController.selectedKategori.value,
-                      label: "Pekerjaan",
-                      onChanged: (val) => addTodoController.setKategori(val!),
-                    ),
-                  ],
+                () => CustomDropdown(
+                  value: addTodoController.selectedKategori.value,
+                  hint: "Pilih kategori",
+                  items: ["Sekolah", "Pribadi", "Pekerjaan"],
+                  onChanged: (newValue) {
+                    if (newValue != null) {
+                      addTodoController.setKategori(newValue);
+                    }
+                  },
                 ),
               ),
+
               SizedBox(height: 24),
 
               Center(
