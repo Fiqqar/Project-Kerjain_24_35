@@ -1,10 +1,85 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:kerjain/colors/app_colors.dart';
+import 'package:kerjain/controllers/userprofile_controller.dart';
+import 'package:kerjain/widgets/custom_button.dart';
+import 'package:kerjain/widgets/custom_card.dart';
+import 'package:kerjain/widgets/custom_text.dart';
 
 class UserProfilePage extends StatelessWidget {
-  const UserProfilePage({super.key});
+   UserProfilePage({super.key});
+  
+    final UserProfileController profileController = Get.find<UserProfileController>();
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: ColorPalette.backgroundColor,
+      body: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 50,bottom: 10,left: 5,right: 5),
+            child: CustomCard(
+              hasShadow: false,
+              topRadius: 15,
+              bottomRadius: 15,
+              color: ColorPalette.primaryColor,
+              padding:  EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundImage: AssetImage(
+                      "assets/images/placeholder.jpg",
+                    ),
+                    backgroundColor: ColorPalette.backgroundColor,
+                  ),
+                  SizedBox(height: 15),
+                  CustomText(
+                    text: "Pepeny",
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    textColor: ColorPalette.backgroundColor,
+                  ),
+                  CustomText(
+                    fontWeight: FontWeight.w600,
+                    text: "3D Modeller",
+                    fontSize: 14,
+                    textColor: ColorPalette.primaryGradientColor.withValues(alpha: 0.7),
+                  ),
+                  SizedBox(height: 20),
+                  CustomCard(
+                    color: ColorPalette.accentColor.withValues(alpha: 0.7),
+                    padding: EdgeInsets.all(12),
+                    bottomRadius: 15,
+                    hasShadow: false,
+                    child: Column(
+                      children: [
+                        buildInfoRow("Username", "pepeny"),
+                        buildInfoRow("First Name", "Zul"),
+                        buildInfoRow("Last Name", "Fiqar"),
+                        buildInfoRow("Birth Date", "01/02/1998"),
+                        buildInfoRow("Country", "Indonesia"),
+                        buildInfoRow("City", "Kudus"),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  CustomButton(
+                    label: "Logout",
+                    onPressed: () {
+                    profileController.logout();
+                    },
+                    color: ColorPalette.accentColor,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

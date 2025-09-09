@@ -40,7 +40,7 @@ class HistoryPage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       textColor: ColorPalette.backgroundColor,
                     ),
-                    const SizedBox(height: 4),
+                    SizedBox(height: 4),
                     CustomText(
                       text: "Riwayat dari kegiatanmu",
                       fontSize: 14,
