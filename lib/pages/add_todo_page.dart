@@ -25,88 +25,98 @@ class AddTodoPage extends StatelessWidget {
           fontWeight: FontWeight.bold,
           fontSize: 20,
         ),
-
         backgroundColor: ColorPalette.primaryColor,
       ),
-      body: SingleChildScrollView(
-        padding:  EdgeInsets.all(8),
-        child: CustomCard(
-          hasShadow: false,
-          color: ColorPalette.primaryColorShade100,
-          topRadius: 15,
-          bottomRadius: 15,
-          padding: EdgeInsets.all(15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomTxtfield(
-                hintText: "Nama kegiatan",
-                controller: addTodoController.namaController,
-                textColor: ColorPalette.textColor,
-                hintTextColor: ColorPalette.textColor.withValues(alpha: 0.5),
-                borderColor: ColorPalette.primaryColor,
-                focusedBorderColor: ColorPalette.accentColor,
-              ),
-              SizedBox(height: 16),
-
-              CustomTxtfield(
-                hintText: "Deskripsi (opsional)",
-                controller: addTodoController.deskripsiController,
-                textColor: ColorPalette.textColor,
-                hintTextColor: ColorPalette.textColor.withValues(alpha: 0.5),
-                borderColor: ColorPalette.primaryColor,
-                focusedBorderColor: ColorPalette.accentColor,
-              ),
-              SizedBox(height: 16),
-
-              CustomText(
-                text: "Kategori",
-                fontSize: 16,
-                textColor: ColorPalette.textColor,
-              ),
-              Obx(
-                () => CustomDropdown(
-                  value: addTodoController.selectedKategori.value,
-                  hint: "Pilih kategori",
-                  items: ["Sekolah", "Pribadi", "Pekerjaan"],
-                  onChanged: (newValue) {
-                    if (newValue != null) {
-                      addTodoController.setKategori(newValue);
-                    }
-                  },
-                ),
-              ),
-
-              SizedBox(height: 24),
-
-              Center(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: CustomButton(
-                        label: "Clear",
-                        onPressed: () {
-                          addTodoController.clearFields();
-                        },
-                        color: ColorPalette.textColor,
-                      ),
+      body: Container(
+        margin: EdgeInsets.only(top: 20),
+        padding: EdgeInsets.all(8),
+        child: SingleChildScrollView(
+          child: CustomCard(
+            hasShadow: false,
+            color: ColorPalette.primaryColorShade100,
+            topRadius: 15,
+            bottomRadius: 15,
+            padding: EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(bottom: 16),
+                  child: CustomTxtfield(
+                    hintText: "Nama kegiatan",
+                    controller: addTodoController.namaController,
+                    textColor: ColorPalette.textColor,
+                    hintTextColor: ColorPalette.textColor.withValues(
+                      alpha: 0.5,
                     ),
-                    SizedBox(width: 16),
-                    Expanded(
-                      child: CustomButton(
-                        label: "Tambahkan",
-                        onPressed: () {
-                          addTodoController.addTodo();
-                          addTodoController.clearFields();
-                          Get.back();
-                        },
-                        color: ColorPalette.accentColor,
-                      ),
-                    ),
-                  ],
+                    borderColor: ColorPalette.primaryColor,
+                    focusedBorderColor: ColorPalette.accentColor,
+                  ),
                 ),
-              ),
-            ],
+
+                Container(
+                  margin: EdgeInsets.only(bottom: 16),
+                  child: CustomTxtfield(
+                    hintText: "Deskripsi (opsional)",
+                    controller: addTodoController.deskripsiController,
+                    textColor: ColorPalette.textColor,
+                    hintTextColor: ColorPalette.textColor.withValues(
+                      alpha: 0.5,
+                    ),
+                    borderColor: ColorPalette.primaryColor,
+                    focusedBorderColor: ColorPalette.accentColor,
+                  ),
+                ),
+
+                CustomText(
+                  text: "Kategori",
+                  fontSize: 16,
+                  textColor: ColorPalette.textColor,
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 24),
+                  child: Obx(
+                    () => CustomDropdown(
+                      value: addTodoController.selectedKategori.value,
+                      hint: "Pilih kategori",
+                      items: addTodoController.kategori,
+                      onChanged: (newValue) {
+                        addTodoController.onChanged(newValue);
+                      },
+                    ),
+                  ),
+                ),
+
+                Center(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: CustomButton(
+                          label: "Clear",
+                          onPressed: () {
+                            addTodoController.clearFields();
+                          },
+                          color: ColorPalette.textColor,
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          margin: EdgeInsets.only(left: 16),
+                          child: CustomButton(
+                            label: "Tambahkan",
+                            onPressed: () {
+                              addTodoController.addTodo();
+                              addTodoController.clearFields();
+                            },
+                            color: ColorPalette.accentColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

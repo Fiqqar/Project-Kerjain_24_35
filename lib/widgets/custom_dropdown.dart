@@ -18,7 +18,7 @@ class CustomDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       decoration: BoxDecoration(
         color: ColorPalette.backgroundColor,
         border: Border.all(color: ColorPalette.primaryColor, width: 1.5),
@@ -40,7 +40,7 @@ class CustomDropdown extends StatelessWidget {
               value: item,
               child: Text(
                 item,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),

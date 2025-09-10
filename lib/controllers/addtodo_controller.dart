@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kerjain/controllers/todo_controller.dart';
 import 'package:kerjain/model/todo_model.dart';
+import 'package:kerjain/routes/routes.dart';
 
 class AddTodoController extends GetxController {
   final namaController = TextEditingController();
   final deskripsiController = TextEditingController();
 
+  var kategori = ["Sekolah", "Pribadi", "Pekerjaan",];
   var selectedKategori = "".obs;
 
   final TodoController todoController = Get.find<TodoController>();
@@ -32,12 +34,12 @@ class AddTodoController extends GetxController {
         kategori: selectedKategori.value,
       ),
     );
-    Get.back();
     Get.snackbar(
       "Berhasil",
       "Kegiatan berhasil ditambahkan!",
       snackPosition: SnackPosition.BOTTOM,
     );
+    Get.toNamed(AppRoutes.bottomNav);
   }
 
   void clearFields() {
@@ -51,5 +53,11 @@ class AddTodoController extends GetxController {
     namaController.dispose();
     deskripsiController.dispose();
     super.onClose();
+  }
+
+  void onChanged(String? newValue) {
+    if (newValue != null && newValue != "") {
+      setKategori(newValue);
+    }
   }
 }

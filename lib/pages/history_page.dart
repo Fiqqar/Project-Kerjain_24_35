@@ -21,7 +21,7 @@ class HistoryPage extends StatelessWidget {
             topRadius: 0,
             bottomRadius: 15,
             hasShadow: false,
-            padding: const EdgeInsets.only(
+            padding: EdgeInsets.only(
               top: 25,
               left: 16,
               right: 16,
@@ -34,13 +34,16 @@ class HistoryPage extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomText(
-                      text: "History",
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      textColor: ColorPalette.backgroundColor,
+                    Container(
+                      margin: EdgeInsets.only(bottom: 4),
+                      child: CustomText(
+                        text: "History",
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        textColor: ColorPalette.backgroundColor,
+                      ),
                     ),
-                    SizedBox(height: 4),
+                    
                     CustomText(
                       text: "Riwayat dari kegiatanmu",
                       fontSize: 14,

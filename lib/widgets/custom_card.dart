@@ -11,7 +11,9 @@ class CustomCard extends StatelessWidget {
   final double topRadius;
   final double bottomRadius;
   final double? height;
-  final double width;  
+  final double width;
+  final double? marginBottom;
+  final double? marginTop;
 
   const CustomCard({
     super.key,
@@ -24,7 +26,9 @@ class CustomCard extends StatelessWidget {
     this.bottomRadius = 0.0,
     this.topRadius = 20.0,
     this.width = double.infinity,
-    this.height, 
+    this.height,
+    this.marginBottom,
+    this.marginTop,
   });
 
   @override
@@ -33,6 +37,8 @@ class CustomCard extends StatelessWidget {
       padding: padding,
       width: width,
       height: height,
+      margin: EdgeInsets.only(top: marginTop ?? 0, bottom: marginBottom ?? 0),
+
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.only(
@@ -43,20 +49,20 @@ class CustomCard extends StatelessWidget {
         ),
         boxShadow: hasShadow
             ? customShadow ??
-                [
-                  BoxShadow(
-                    color: ColorPalette.shadowColor,
-                    offset: const Offset(0, 4),
-                    blurRadius: 1,
-                    spreadRadius: 0,
-                  ),
-                  BoxShadow(
-                    color: ColorPalette.shadowColor,
-                    offset: const Offset(0, 2),
-                    blurRadius: 1,
-                    spreadRadius: 0,
-                  ),
-                ]
+                  [
+                    BoxShadow(
+                      color: ColorPalette.shadowColor,
+                      offset: const Offset(0, 4),
+                      blurRadius: 1,
+                      spreadRadius: 0,
+                    ),
+                    BoxShadow(
+                      color: ColorPalette.shadowColor,
+                      offset: const Offset(0, 2),
+                      blurRadius: 1,
+                      spreadRadius: 0,
+                    ),
+                  ]
             : null,
       ),
       child: child,

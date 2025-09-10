@@ -34,7 +34,7 @@ class BottomNav extends StatelessWidget {
             unselectedItemColor: ColorPalette.backgroundColor.withValues(
               alpha: 0.7,
             ),
-            items: const [
+            items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.check_box),
                 label: "To Do",

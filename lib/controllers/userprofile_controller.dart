@@ -5,5 +5,4 @@ class UserProfileController extends GetxController{
   void logout () {
    Get.offAllNamed(AppRoutes.login);
   }
-  
 }
