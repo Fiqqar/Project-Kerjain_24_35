@@ -58,7 +58,7 @@ Widget buildInfoRow(String label, String value) {
             fontWeight: FontWeight.bold,
             textColor: ColorPalette.primaryColor,
           ),
-          const SizedBox(width: 8),
+          SizedBox(width: 8),
         ],
       ),
     );

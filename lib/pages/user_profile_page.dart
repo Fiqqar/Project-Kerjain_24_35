@@ -29,28 +29,36 @@ class UserProfilePage extends StatelessWidget {
               padding:  EdgeInsets.symmetric(vertical: 24, horizontal: 16),
               child: Column(
                 children: [
-                  CircleAvatar(
-                    radius: 40,
-                    backgroundImage: AssetImage(
-                      "assets/images/fiqar.png",
+                  Container(
+                    margin: EdgeInsets.only(bottom: 10),
+                    child: CircleAvatar(
+                      radius: 40,
+                      backgroundImage: AssetImage(
+                        "assets/images/fiqar.png",
+                      ),
+                      backgroundColor: ColorPalette.backgroundColor,
                     ),
-                    backgroundColor: ColorPalette.backgroundColor,
                   ),
-                  SizedBox(height: 15),
-                  CustomText(
-                    text: "Pepeny",
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    textColor: ColorPalette.backgroundColor,
+                  Container(
+                    margin: EdgeInsets.only(bottom: 1),
+                    child: CustomText(
+                      text: "Pepeny",
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      textColor: ColorPalette.backgroundColor,
+                    ),
                   ),
-                  CustomText(
-                    fontWeight: FontWeight.w600,
-                    text: "3D Modeller",
-                    fontSize: 14,
-                    textColor: ColorPalette.primaryGradientColor.withValues(alpha: 0.7),
+                  Container(
+                    margin: EdgeInsets.only(bottom: 20),
+                    child: CustomText(
+                      fontWeight: FontWeight.w600,
+                      text: "3D Modeller",
+                      fontSize: 14,
+                      textColor: ColorPalette.primaryGradientColor.withValues(alpha: 0.7),
+                    ),
                   ),
-                  SizedBox(height: 20),
                   CustomCard(
+                    marginBottom: 20,
                     color: ColorPalette.accentColor.withValues(alpha: 0.7),
                     padding: EdgeInsets.all(12),
                     bottomRadius: 15,
@@ -66,7 +74,6 @@ class UserProfilePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 20),
                   CustomButton(
                     label: "Logout",
                     onPressed: () {

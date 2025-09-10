@@ -25,22 +25,7 @@ class TodoController extends GetxController {
       ),
       TodoModel(
         namaTodo: "Meeting dengan client",
-        deskripsiTodo: "ACC BOSQUE",
-        kategori: "Pekerjaan",
-      ),
-      TodoModel(
-        namaTodo: "Meeting dengan client",
-        deskripsiTodo: "ACC BOSQUE",
-        kategori: "Pekerjaan",
-      ),
-      TodoModel(
-        namaTodo: "Meeting dengan client",
-        deskripsiTodo: "ACC BOSQUE",
-        kategori: "Pekerjaan",
-      ),
-      TodoModel(
-        namaTodo: "Meeting dengan client",
-        deskripsiTodo: "ACC BOSQUE",
+        deskripsiTodo: "Rapat Kesepakatan Harga Web",
         kategori: "Pekerjaan",
       ),
     ]);
@@ -56,14 +41,19 @@ class TodoController extends GetxController {
     "Pribadi": ColorPalette.g,
     "Pekerjaan": ColorPalette.r,
   };
-  
+
   getCategoryColor(String kategori) {
     return categoryColors[kategori] ?? ColorPalette.textColor;
   }
 
   void deleteTodo(int index) {
-    history.add(todos[index]);
-    todos[index].completedAt = DateTime.now();
-    todos.removeAt(index);
+    if (todos[index].isCompleted != true) {
+      todos.removeAt(index);
+      Get.snackbar('Berhasil', 'Kegiatan berhasil di hapus');
+    } else {
+      todos[index].completedAt = DateTime.now();
+      history.add(todos[index]);
+      todos.removeAt(index);
+    }
   }
 }

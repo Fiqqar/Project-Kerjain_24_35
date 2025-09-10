@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
             topRadius: 0,
             bottomRadius: 15,
             hasShadow: false,
-            padding: const EdgeInsets.only(
+            padding: EdgeInsets.only(
               top: 25,
               left: 16,
               right: 16,
@@ -36,13 +36,16 @@ class HomePage extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomText(
-                      text: "Beranda",
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      textColor: ColorPalette.backgroundColor,
+                    Container(
+                      margin: EdgeInsets.only(bottom: 4),
+                      child: CustomText(
+                        text: "Beranda",
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        textColor: ColorPalette.backgroundColor,
+                      ),
                     ),
-                    const SizedBox(height: 4),
+
                     CustomText(
                       text: "Selamat datang kembali, Fiqar!",
                       fontSize: 14,
@@ -68,8 +71,19 @@ class HomePage extends StatelessWidget {
           ),
 
           Expanded(
-            child: Obx(
-              () => ListView.builder(
+            child: Obx(() {
+              final todos = todoController.todos;
+              if(todos.isEmpty) {
+                return Center(
+                  child: CustomText(
+                    text: "Belum ada kegiatan",
+                    fontSize: 14,
+                    textColor: ColorPalette.textColor.withValues(alpha: 0.7),
+                  ),
+                );
+              }
+
+              return ListView.builder(
                 padding: EdgeInsets.all(10),
                 itemCount: todoController.todos.length,
                 itemBuilder: (context, index) {
@@ -116,6 +130,9 @@ class HomePage extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Container(
+                              margin: EdgeInsets.only(
+                                right: 8,
+                              ),
                               padding: EdgeInsets.symmetric(
                                 horizontal: 8,
                                 vertical: 4,
@@ -132,7 +149,6 @@ class HomePage extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            const SizedBox(width: 8),
                             IconButton(
                               icon: Icon(Icons.delete, color: Colors.red),
                               onPressed: () {
@@ -145,8 +161,8 @@ class HomePage extends StatelessWidget {
                     ),
                   );
                 },
-              ),
-            ),
+              );
+            }),
           ),
         ],
       ),

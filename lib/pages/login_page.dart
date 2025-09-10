@@ -18,12 +18,13 @@ class LoginPage extends StatelessWidget {
       backgroundColor: ColorPalette.backgroundColor,
       body: Column(
         children: [
-          const SizedBox(height: 80),
-          CircleAvatar(
-            backgroundImage: AssetImage('assets/images/LOGO.png'),
-            radius: 48,
+          Container(
+            margin: EdgeInsets.only(top: 80,bottom: 16),
+            child: CircleAvatar(
+              backgroundImage: AssetImage('assets/images/LOGO.png'),
+              radius: 48,
+            ),
           ),
-          const SizedBox(height: 16),
           CustomText(
             text: "Kerjain",
             fontSize: 24,
@@ -40,30 +41,38 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  CustomText(
-                    text: "Selamat Datang Kembali!",
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    textColor: ColorPalette.backgroundColor,
-                  ),
-                  const SizedBox(height: 25),
-                  CustomTxtfield(
-                    controller: loginController.emailController,
-                    hintText: "Email",
-                    hintTextColor: ColorPalette.backgroundColor.withValues(
-                      alpha: 0.7,
+                  Container(
+                    margin: EdgeInsets.only(bottom: 25),
+                    child: CustomText(
+                      text: "Selamat Datang Kembali!",
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      textColor: ColorPalette.backgroundColor,
                     ),
                   ),
-                  const SizedBox(height: 12),
-                  CustomTxtfield(
-                    controller: loginController.passController,
-                    hintText: "Password",
-                    hintTextColor: ColorPalette.backgroundColor.withValues(
-                      alpha: 0.7,
+                  
+                  Container(
+                    margin: EdgeInsets.only(bottom: 12),
+                    child: CustomTxtfield(
+                      controller: loginController.emailController,
+                      hintText: "Email",
+                      hintTextColor: ColorPalette.backgroundColor.withValues(
+                        alpha: 0.7,
+                      ),
                     ),
-                    obscureText: true,
                   ),
-                  const SizedBox(height: 30),
+                  
+                  Container(
+                    margin: EdgeInsets.only(bottom: 30),
+                    child: CustomTxtfield(
+                      controller: loginController.passController,
+                      hintText: "Password",
+                      hintTextColor: ColorPalette.backgroundColor.withValues(
+                        alpha: 0.7,
+                      ),
+                      obscureText: true,
+                    ),
+                  ),
                   CustomButton(
                     label: "Login",
                     onPressed: () {
