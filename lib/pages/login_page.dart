@@ -19,7 +19,7 @@ class LoginPage extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            margin: EdgeInsets.only(top: 80,bottom: 16),
+            margin: EdgeInsets.only(top: 80, bottom: 16),
             child: CircleAvatar(
               backgroundImage: AssetImage('assets/images/LOGO.png'),
               radius: 48,
@@ -50,7 +50,7 @@ class LoginPage extends StatelessWidget {
                       textColor: ColorPalette.backgroundColor,
                     ),
                   ),
-                  
+
                   Container(
                     margin: EdgeInsets.only(bottom: 12),
                     child: CustomTxtfield(
@@ -61,18 +61,34 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  
+
                   Container(
                     margin: EdgeInsets.only(bottom: 30),
-                    child: CustomTxtfield(
-                      controller: loginController.passController,
-                      hintText: "Password",
-                      hintTextColor: ColorPalette.backgroundColor.withValues(
-                        alpha: 0.7,
+                    child: Obx(
+                      () => CustomTxtfield(
+                        controller: loginController.passController,
+                        hintText: "Password",
+                        hintTextColor: ColorPalette.backgroundColor.withValues(
+                          alpha: 0.7,
+                        ),
+                        obscureText: loginController
+                            .isPasswordHidden
+                            .value, 
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            loginController.isPasswordHidden.value
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                            color: ColorPalette.backgroundColor,
+                          ),
+                          onPressed: () {
+                            loginController.togglePasswordVisibility();
+                          },
+                        ),
                       ),
-                      obscureText: true,
                     ),
                   ),
+
                   CustomButton(
                     label: "Login",
                     onPressed: () {

@@ -9,6 +9,7 @@ class CustomTxtfield extends StatelessWidget {
   final Color focusedBorderColor; 
   final Color hintTextColor;
   final Color textColor;
+  final Widget? suffixIcon;
 
   const CustomTxtfield({
     super.key,
@@ -19,6 +20,7 @@ class CustomTxtfield extends StatelessWidget {
     this.focusedBorderColor = ColorPalette.primaryGradientColor,
     this.hintTextColor = ColorPalette.backgroundColor,
     this.textColor = ColorPalette.backgroundColor,
+    this.suffixIcon
   });
 
   @override
@@ -40,6 +42,7 @@ class CustomTxtfield extends StatelessWidget {
           borderSide: BorderSide(color: focusedBorderColor, width: 2),
         ),
         contentPadding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+        suffixIcon: suffixIcon,
       ),
     );
   }
