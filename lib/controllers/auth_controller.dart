@@ -9,6 +9,7 @@ class AuthController extends GetxController {
   final emailController = TextEditingController();
   final passController = TextEditingController();
 
+  var isPasswordHidden = true.obs;
 
   void login() {
     if (emailController.text == email && passController.text == pass ) {
@@ -32,5 +33,9 @@ class AuthController extends GetxController {
     super.onClose();
     emailController.dispose();
     passController.dispose();
+  }
+
+  void togglePasswordVisibility() {
+  isPasswordHidden.value = !isPasswordHidden.value;
   }
 }
