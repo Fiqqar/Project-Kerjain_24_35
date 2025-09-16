@@ -7,9 +7,11 @@ import 'package:kerjain/routes/routes.dart';
 class AddTodoController extends GetxController {
   final namaController = TextEditingController();
   final deskripsiController = TextEditingController();
+  final deadlineController = TextEditingController();
 
-  var kategori = ["Sekolah", "Pribadi", "Pekerjaan",];
+  var kategori = ["Sekolah", "Pribadi", "Pekerjaan"];
   var selectedKategori = "".obs;
+  var deadline = Rxn<DateTime>();
 
   final TodoController todoController = Get.find<TodoController>();
 
@@ -32,6 +34,7 @@ class AddTodoController extends GetxController {
         namaTodo: namaController.text,
         deskripsiTodo: deskripsiController.text,
         kategori: selectedKategori.value,
+        deadline: deadline.value,
       ),
     );
     Get.snackbar(
@@ -46,12 +49,15 @@ class AddTodoController extends GetxController {
     namaController.clear();
     deskripsiController.clear();
     selectedKategori.value = "";
+    deadlineController.clear();
   }
 
   @override
   void onClose() {
     namaController.dispose();
     deskripsiController.dispose();
+    selectedKategori.value = "";
+    deadlineController.dispose();
     super.onClose();
   }
 
@@ -59,5 +65,36 @@ class AddTodoController extends GetxController {
     if (newValue != null && newValue != "") {
       setKategori(newValue);
     }
+  }
+
+  Future pickDeadline(BuildContext context) async {
+    var pickedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+
+    if (pickedDate == null) return;
+    if (!context.mounted) return;
+
+    var pickedTime = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+
+    var dateTime = pickedTime == null
+        ? DateTime(pickedDate.year, pickedDate.month, pickedDate.day)
+        : DateTime(
+            pickedDate.year,
+            pickedDate.month,
+            pickedDate.day,
+            pickedTime.hour,
+            pickedTime.minute,
+          );
+
+    deadline.value = dateTime;
+    deadlineController.text =
+        "${dateTime.day}-${dateTime.month}-${dateTime.year} ${dateTime.hour}:${dateTime.minute.toString().padLeft(2, '0')}";
   }
 }

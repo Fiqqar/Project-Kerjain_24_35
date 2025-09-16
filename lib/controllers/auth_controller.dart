@@ -38,4 +38,12 @@ class AuthController extends GetxController {
   void togglePasswordVisibility() {
   isPasswordHidden.value = !isPasswordHidden.value;
   }
+  
+  IconData get passwordIcon {
+    if (isPasswordHidden.value) {
+      return Icons.visibility_off;
+    } else {
+      return Icons.visibility;
+    }
+  }
 }

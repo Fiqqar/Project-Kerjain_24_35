@@ -10,6 +10,8 @@ class CustomTxtfield extends StatelessWidget {
   final Color hintTextColor;
   final Color textColor;
   final Widget? suffixIcon;
+  final VoidCallback? onTap;
+  final bool readOnly;
 
   const CustomTxtfield({
     super.key,
@@ -20,7 +22,9 @@ class CustomTxtfield extends StatelessWidget {
     this.focusedBorderColor = ColorPalette.primaryGradientColor,
     this.hintTextColor = ColorPalette.backgroundColor,
     this.textColor = ColorPalette.backgroundColor,
-    this.suffixIcon
+    this.suffixIcon,
+    this.onTap,
+    this.readOnly = false,
   });
 
   @override
@@ -28,9 +32,10 @@ class CustomTxtfield extends StatelessWidget {
     return TextField(
       controller: controller,
       obscureText: obscureText, 
+      readOnly: readOnly,
+      onTap: onTap,
       style: TextStyle(color: textColor),
       decoration: InputDecoration(
-        
         hintText: hintText,
         hintStyle: TextStyle(color: hintTextColor),
         enabledBorder: OutlineInputBorder(

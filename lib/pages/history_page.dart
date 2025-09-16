@@ -21,12 +21,7 @@ class HistoryPage extends StatelessWidget {
             topRadius: 0,
             bottomRadius: 15,
             hasShadow: false,
-            padding: EdgeInsets.only(
-              top: 25,
-              left: 16,
-              right: 16,
-              bottom: 16,
-            ),
+            padding: EdgeInsets.only(top: 25, left: 16, right: 16, bottom: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -43,7 +38,7 @@ class HistoryPage extends StatelessWidget {
                         textColor: ColorPalette.backgroundColor,
                       ),
                     ),
-                    
+
                     CustomText(
                       text: "Riwayat dari kegiatanmu",
                       fontSize: 14,
@@ -81,7 +76,7 @@ class HistoryPage extends StatelessWidget {
                     child: CustomCard(
                       padding: EdgeInsets.zero,
                       hasShadow: false,
-                      color: ColorPalette.history,
+                      color: controller.getDoneColor(todo),
                       topRadius: 15,
                       bottomRadius: 15,
                       child: ListTile(
@@ -94,20 +89,29 @@ class HistoryPage extends StatelessWidget {
                           color: ColorPalette.primaryColor,
                         ),
                         title: CustomText(
-                          text: todo.deskripsiTodo.trim() == ''
-                              ? todo.namaTodo
-                              : "${todo.namaTodo} - ${todo.deskripsiTodo}",
+                          text: controller.getTodoName(todo),
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
-                        subtitle: CustomText(
-                          text: todo.completedAt != null
-                              ? "Diselesaikan pada : ${todo.completedAt?.toLocal().toString().split('.')[0]}"
-                              : "",
-                          fontSize: 13,
-                          textColor: ColorPalette.textColor.withValues(
-                            alpha: 0.7,
-                          ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomText(
+                              text: controller.getCompleted(todo),
+                              fontSize: 13,
+                              textColor: ColorPalette.textColor.withValues(
+                                alpha: 0.7,
+                              ),
+                            ),
+                            CustomText(
+                              text: controller.getDeadline(todo),
+                              fontSize: 12,
+                              textColor: ColorPalette.textColor.withValues(
+                                alpha: 0.5,
+                              ),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ],
                         ),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
@@ -128,6 +132,12 @@ class HistoryPage extends StatelessWidget {
                                 textColor: ColorPalette.backgroundColor,
                                 fontWeight: FontWeight.bold,
                               ),
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.delete, color: Colors.red),
+                              onPressed: () {
+                                controller.deleteHistory(index);
+                              },
                             ),
                           ],
                         ),
