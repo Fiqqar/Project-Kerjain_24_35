@@ -67,12 +67,6 @@ class AddTodoPage extends StatelessWidget {
                     focusedBorderColor: ColorPalette.accentColor,
                   ),
                 ),
-
-                CustomText(
-                  text: "Kategori",
-                  fontSize: 16,
-                  textColor: ColorPalette.textColor,
-                ),
                 Container(
                   margin: EdgeInsets.only(bottom: 24),
                   child: Obx(
@@ -86,7 +80,27 @@ class AddTodoPage extends StatelessWidget {
                     ),
                   ),
                 ),
-
+                Container(
+                  margin: EdgeInsets.only(bottom: 16),
+                  child: CustomTxtfield(
+                    readOnly: true,
+                    hintText: "Pilih Deadline",
+                    controller: addTodoController.deadlineController,
+                    textColor: ColorPalette.textColor,
+                    suffixIcon: Icon(
+                      Icons.calendar_month_rounded,
+                      color: ColorPalette.textColor,
+                    ),
+                    hintTextColor: ColorPalette.textColor.withValues(
+                      alpha: 0.5,
+                    ),
+                    borderColor: ColorPalette.primaryColor,
+                    focusedBorderColor: ColorPalette.accentColor,
+                    onTap: () {
+                      addTodoController.pickDeadline(context);
+                    },
+                  ),
+                ),
                 Center(
                   child: Row(
                     children: [

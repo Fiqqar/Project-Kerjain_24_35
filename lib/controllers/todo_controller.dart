@@ -17,16 +17,19 @@ class TodoController extends GetxController {
         namaTodo: "Tugas B. Inggris",
         deskripsiTodo: "Tugas video iklan",
         kategori: "Sekolah",
+        deadline: DateTime.now().add(Duration(days: 2)),
       ),
       TodoModel(
         namaTodo: "Belajar 3D Modelling",
         deskripsiTodo: "Belajar UV Mapping",
         kategori: "Pribadi",
+        deadline: DateTime.now().add(Duration(days: 5)),
       ),
       TodoModel(
         namaTodo: "Meeting dengan client",
         deskripsiTodo: "Rapat Kesepakatan Harga Web",
         kategori: "Pekerjaan",
+        deadline: DateTime.now().add(Duration(days: 1)),
       ),
     ]);
   }
@@ -47,13 +50,43 @@ class TodoController extends GetxController {
   }
 
   void deleteTodo(int index) {
-    if (todos[index].isCompleted != true) {
-      todos.removeAt(index);
-      Get.snackbar('Berhasil', 'Kegiatan berhasil di hapus');
-    } else {
-      todos[index].completedAt = DateTime.now();
-      history.add(todos[index]);
-      todos.removeAt(index);
-    }
+    todos[index].completedAt = DateTime.now();
+    history.add(todos[index]);
+    todos.removeAt(index);
+  }
+
+  void deleteHistory(int index) {
+    history.removeAt(index);
+    Get.snackbar('Berhasil', 'Kegiatan berhasil di hapus');
+  }
+
+  String getCompleted(todo) {
+    return (todo.isCompleted && todo.completedAt != null)
+        ? "Diselesaikan pada : ${todo.completedAt?.toLocal().toString().split('.')[0].substring(0, 16)}"
+        : "Dihapus pada : ${todo.completedAt?.toLocal().toString().split('.')[0].substring(0, 16)}";
+  }
+
+  String getDeadline(todo) {
+    return (todo.isCompleted && todo.completedAt != null)
+        ? (todo.completedAt!.isAfter(todo.deadline!)
+            ? "Tidak selesai tepat waktu"
+            : "Selesai tepat waktu")
+        : "Tidak selesai";
+  }
+  Color getDoneColor(todo) {
+    return todo.isCompleted == true
+        ? ColorPalette.history
+        : ColorPalette.notCheckedHistory;
+  }
+  String getTodoName(todo) {
+    return todo.deskripsiTodo.trim() == ''
+        ? todo.namaTodo
+        : "${todo.namaTodo} - ${todo.deskripsiTodo}";
+  }
+  String getDeadlineDate(todo) {
+    if (todo.deadline == null) return "Belum ditentukan";
+
+    final d = todo.deadline!;
+    return "Deadline: ${d.day}-${d.month}-${d.year} ${d.hour.toString().padLeft(2,'0')}:${d.minute.toString().padLeft(2,'0')}";
   }
 }

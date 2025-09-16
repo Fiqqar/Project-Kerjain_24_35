@@ -23,12 +23,7 @@ class HomePage extends StatelessWidget {
             topRadius: 0,
             bottomRadius: 15,
             hasShadow: false,
-            padding: EdgeInsets.only(
-              top: 25,
-              left: 16,
-              right: 16,
-              bottom: 16,
-            ),
+            padding: EdgeInsets.only(top: 25, left: 16, right: 16, bottom: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,7 +42,7 @@ class HomePage extends StatelessWidget {
                     ),
 
                     CustomText(
-                      text: "Selamat datang kembali, Fiqar!",
+                      text: "Selamat datang kembali, Admin!",
                       fontSize: 14,
                       textColor: ColorPalette.backgroundColor.withValues(
                         alpha: 0.7,
@@ -73,7 +68,7 @@ class HomePage extends StatelessWidget {
           Expanded(
             child: Obx(() {
               final todos = todoController.todos;
-              if(todos.isEmpty) {
+              if (todos.isEmpty) {
                 return Center(
                   child: CustomText(
                     text: "Belum ada kegiatan",
@@ -119,20 +114,37 @@ class HomePage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           isLineThrough: todo.isCompleted,
                         ),
-                        subtitle: CustomText(
-                          text: todo.deskripsiTodo,
-                          fontSize: 13,
-                          textColor: ColorPalette.textColor.withValues(
-                            alpha: 0.7,
-                          ),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(bottom: 1),
+                              child: CustomText(
+                                text: todo.deskripsiTodo,
+                                fontSize: 13,
+                                textColor: ColorPalette.textColor.withValues(
+                                  alpha: 0.7,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 1),
+                              child: CustomText(
+                                text: todoController.getDeadlineDate(todo),
+                                fontSize: 12,
+                                textColor: ColorPalette.textColor.withValues(
+                                  alpha: 0.5,
+                                ),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
                         ),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Container(
-                              margin: EdgeInsets.only(
-                                right: 8,
-                              ),
+                              margin: EdgeInsets.only(right: 8),
                               padding: EdgeInsets.symmetric(
                                 horizontal: 8,
                                 vertical: 4,

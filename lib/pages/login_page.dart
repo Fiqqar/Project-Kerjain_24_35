@@ -58,7 +58,7 @@ class LoginPage extends StatelessWidget {
                       hintText: "Email",
                       hintTextColor: ColorPalette.backgroundColor.withValues(
                         alpha: 0.7,
-                      ),
+                      )
                     ),
                   ),
 
@@ -76,9 +76,7 @@ class LoginPage extends StatelessWidget {
                             .value, 
                         suffixIcon: IconButton(
                           icon: Icon(
-                            loginController.isPasswordHidden.value
-                                ? Icons.visibility_off
-                                : Icons.visibility,
+                            loginController.passwordIcon,
                             color: ColorPalette.backgroundColor,
                           ),
                           onPressed: () {

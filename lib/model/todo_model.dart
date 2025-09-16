@@ -4,12 +4,14 @@ class TodoModel {
   final String kategori;
   bool isCompleted;
   DateTime? completedAt;
+  DateTime? deadline;
 
   TodoModel({
     required this.namaTodo,
     required this.deskripsiTodo,
     required this.kategori,
     this.isCompleted = false, 
-    this.completedAt
+    this.completedAt,
+    this.deadline,
   });
 }

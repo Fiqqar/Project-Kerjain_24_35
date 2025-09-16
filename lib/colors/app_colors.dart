@@ -12,6 +12,7 @@ class ColorPalette {
   static const Color shadowColor = Color(0xFF000000);
   static const Color transparent = Colors.transparent;
   static const Color history = Color(0xFFD6E4F0);
+  static const Color notCheckedHistory = Color(0xFFFF7171);
   static const Color r = Colors.red;
   static const Color g = Colors.green;
   static const Color b = Colors.blue;
