@@ -86,7 +86,7 @@ class HistoryPage extends StatelessWidget {
                         ),
                         leading: Icon(
                           Icons.history,
-                          color: ColorPalette.primaryColor,
+                          color: ColorPalette.backgroundColor,
                         ),
                         title: CustomText(
                           text: controller.getTodoName(todo),
@@ -135,7 +135,7 @@ class HistoryPage extends StatelessWidget {
                               ),
                             ),
                             IconButton(
-                              icon: Icon(Icons.delete, color: Colors.red),
+                              icon: Icon(Icons.delete, color: ColorPalette.r),
                               onPressed: () {
                                 controller.deleteHistory(index);
                               },

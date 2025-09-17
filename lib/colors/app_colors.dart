@@ -16,4 +16,5 @@ class ColorPalette {
   static const Color r = Colors.red;
   static const Color g = Colors.green;
   static const Color b = Colors.blue;
+  static const Color o = Colors.orange;
 }

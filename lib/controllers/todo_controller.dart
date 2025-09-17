@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:get/get.dart';
 import 'package:kerjain/colors/app_colors.dart';
-import 'package:kerjain/controllers/addtodo_controller.dart';
 import 'package:kerjain/model/todo_model.dart';
 
 class TodoController extends GetxController {
@@ -59,7 +58,7 @@ class TodoController extends GetxController {
   Map<String, Color> categoryColors = {
     "Sekolah": ColorPalette.b,
     "Pribadi": ColorPalette.g,
-    "Pekerjaan": ColorPalette.r,
+    "Pekerjaan": ColorPalette.o,
   };
 
   getCategoryColor(String kategori) {

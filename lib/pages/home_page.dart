@@ -52,10 +52,11 @@ class HomePage extends StatelessWidget {
                 ),
 
                 CustomFloatingButton(
-                  backgroundColor: ColorPalette.accentColor,
+                  backgroundColor: ColorPalette.primaryColor,
                   iconColor: Colors.white,
                   borderRadius: 12,
                   size: 45,
+                  hasShadow: false,
                   icon: Icons.add,
                   onPressed: () {
                     Get.toNamed(AppRoutes.addTodo);
