@@ -66,8 +66,8 @@ class UserProfilePage extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       text: "Kerjain Developer",
                       fontSize: 14,
-                      textColor: ColorPalette.primaryGradientColor.withValues(
-                        alpha: 0.7,
+                      textColor: ColorPalette.textColor.withValues(
+                        alpha: 0.9,
                       ),
                     ),
                   ),

@@ -56,6 +56,7 @@ class CustomFloatingButton extends StatelessWidget {
   final Color iconColor;
   final double size;
   final double borderRadius;
+  final bool hasShadow;
 
   const CustomFloatingButton({
     super.key,
@@ -65,6 +66,7 @@ class CustomFloatingButton extends StatelessWidget {
     this.iconColor = ColorPalette.backgroundColor,
     this.size = 56.0,
     this.borderRadius = 15.0,
+    this.hasShadow = false,
   });
 
   @override
@@ -72,7 +74,8 @@ class CustomFloatingButton extends StatelessWidget {
     return Material(
       color: backgroundColor,
       borderRadius: BorderRadius.circular(borderRadius),
-      elevation: 6,
+      elevation: hasShadow ? 6 : 0,
+    
       child: InkWell(
         onTap: onPressed,
         borderRadius: BorderRadius.circular(borderRadius),
