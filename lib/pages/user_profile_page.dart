@@ -34,7 +34,7 @@ class UserProfilePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(bottom: 10),
+                        margin: EdgeInsets.only(bottom: 10, right: 7),
                         child: CircleAvatar(
                           radius: 40,
                           backgroundImage: AssetImage("assets/images/fiqar.png"),

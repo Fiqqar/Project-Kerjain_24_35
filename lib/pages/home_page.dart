@@ -110,7 +110,7 @@ class HomePage extends StatelessWidget {
                         ),
                         title: CustomText(
                           text: todo.namaTodo,
-                          fontSize: 18,
+                          fontSize: 12,
                           fontWeight: FontWeight.bold,
                           isLineThrough: todo.isCompleted,
                         ),
@@ -121,7 +121,7 @@ class HomePage extends StatelessWidget {
                               margin: EdgeInsets.only(bottom: 1),
                               child: CustomText(
                                 text: todo.deskripsiTodo,
-                                fontSize: 13,
+                                fontSize: 10,
                                 textColor: ColorPalette.textColor.withValues(
                                   alpha: 0.7,
                                 ),
@@ -131,7 +131,7 @@ class HomePage extends StatelessWidget {
                               margin: EdgeInsets.only(top: 1),
                               child: CustomText(
                                 text: todoController.getDeadlineDate(todo),
-                                fontSize: 12,
+                                fontSize: 10,
                                 textColor: ColorPalette.textColor.withValues(
                                   alpha: 0.5,
                                 ),
@@ -159,6 +159,7 @@ class HomePage extends StatelessWidget {
                                 text: todo.kategori,
                                 textColor: ColorPalette.backgroundColor,
                                 fontWeight: FontWeight.bold,
+                                fontSize: 12,
                               ),
                             ),
                             IconButton(
