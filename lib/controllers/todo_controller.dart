@@ -9,8 +9,21 @@ class TodoController extends GetxController {
   var todos = <TodoModel>[].obs;
   var history = <TodoModel>[].obs;
 
-  final AddTodoController addController = Get.find<AddTodoController>();
 
+  final List<String> months = const [
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember",
+  ];
 
   @override
   void onInit() {
@@ -67,8 +80,8 @@ class TodoController extends GetxController {
   String getCompleted(todo) {
     var c = todo.completedAt;
     return (todo.isCompleted && todo.completedAt != null)
-        ? "Diselesaikan pada : ${c.day} ${addController.months[c.month - 1]} ${c.year} ${c.hour.toString().padLeft(2,'0')}:${c.minute.toString().padLeft(2,'0')}"
-        : "Dihapus pada : ${c.day} ${addController.months[c.month - 1]} ${c.year} ${c.hour.toString().padLeft(2,'0')}:${c.minute.toString().padLeft(2,'0')}"
+        ? "Diselesaikan pada : ${c.day} ${months[c.month - 1]} ${c.year} ${c.hour.toString().padLeft(2,'0')}:${c.minute.toString().padLeft(2,'0')}"
+        : "Dihapus pada : ${c.day} ${months[c.month - 1]} ${c.year} ${c.hour.toString().padLeft(2,'0')}:${c.minute.toString().padLeft(2,'0')}"
 ;
   }
 
@@ -93,6 +106,6 @@ class TodoController extends GetxController {
     if (todo.deadline == null) return "Belum ditentukan";
 
     final d = todo.deadline!;
-    return "Deadline: ${d.day} ${addController.months[d.month - 1]} ${d.year} ${d.hour.toString().padLeft(2,'0')}:${d.minute.toString().padLeft(2,'0')}";
+    return "Deadline: ${d.day} ${months[d.month - 1]} ${d.year} ${d.hour.toString().padLeft(2,'0')}:${d.minute.toString().padLeft(2,'0')}";
   }
 }

@@ -13,21 +13,6 @@ class AddTodoController extends GetxController {
   var selectedKategori = "".obs;
   var deadline = Rxn<DateTime>();
 
-  final List<String> months = const [
-    "Januari",
-    "Februari",
-    "Maret",
-    "April",
-    "Mei",
-    "Juni",
-    "Juli",
-    "Agustus",
-    "September",
-    "Oktober",
-    "November",
-    "Desember",
-  ];
-
   final TodoController todoController = Get.find<TodoController>();
 
   void setKategori(String kategori) {
@@ -110,6 +95,6 @@ class AddTodoController extends GetxController {
 
     deadline.value = dateTime;
     deadlineController.text =
-        "${dateTime.day} ${months[dateTime.month - 1]} ${dateTime.year} ${dateTime.hour}:${dateTime.minute.toString().padLeft(2, '0')}";
+        "${dateTime.day} ${todoController.months[dateTime.month - 1]} ${dateTime.year} ${dateTime.hour}:${dateTime.minute.toString().padLeft(2, '0')}";
   }
 }
