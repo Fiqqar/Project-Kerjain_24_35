@@ -44,7 +44,7 @@ class LoginPage extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(bottom: 25),
                     child: CustomText(
-                      text: "Selamat Datang Kembali!",
+                      text: "Selamat Datang!",
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
                       textColor: ColorPalette.backgroundColor,

@@ -2,11 +2,15 @@ import 'dart:ui';
 
 import 'package:get/get.dart';
 import 'package:kerjain/colors/app_colors.dart';
+import 'package:kerjain/controllers/addtodo_controller.dart';
 import 'package:kerjain/model/todo_model.dart';
 
 class TodoController extends GetxController {
   var todos = <TodoModel>[].obs;
   var history = <TodoModel>[].obs;
+
+  final AddTodoController addController = Get.find<AddTodoController>();
+
 
   @override
   void onInit() {
@@ -61,9 +65,11 @@ class TodoController extends GetxController {
   }
 
   String getCompleted(todo) {
+    var c = todo.completedAt;
     return (todo.isCompleted && todo.completedAt != null)
-        ? "Diselesaikan pada : ${todo.completedAt?.toLocal().toString().split('.')[0].substring(0, 16)}"
-        : "Dihapus pada : ${todo.completedAt?.toLocal().toString().split('.')[0].substring(0, 16)}";
+        ? "Diselesaikan pada : ${c.day} ${addController.months[c.month - 1]} ${c.year} ${c.hour.toString().padLeft(2,'0')}:${c.minute.toString().padLeft(2,'0')}"
+        : "Dihapus pada : ${c.day} ${addController.months[c.month - 1]} ${c.year} ${c.hour.toString().padLeft(2,'0')}:${c.minute.toString().padLeft(2,'0')}"
+;
   }
 
   String getDeadline(todo) {
@@ -87,6 +93,6 @@ class TodoController extends GetxController {
     if (todo.deadline == null) return "Belum ditentukan";
 
     final d = todo.deadline!;
-    return "Deadline: ${d.day}-${d.month}-${d.year} ${d.hour.toString().padLeft(2,'0')}:${d.minute.toString().padLeft(2,'0')}";
+    return "Deadline: ${d.day} ${addController.months[d.month - 1]} ${d.year} ${d.hour.toString().padLeft(2,'0')}:${d.minute.toString().padLeft(2,'0')}";
   }
 }

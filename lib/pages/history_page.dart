@@ -90,7 +90,7 @@ class HistoryPage extends StatelessWidget {
                         ),
                         title: CustomText(
                           text: controller.getTodoName(todo),
-                          fontSize: 18,
+                          fontSize: 12,
                           fontWeight: FontWeight.bold,
                         ),
                         subtitle: Column(
@@ -98,14 +98,14 @@ class HistoryPage extends StatelessWidget {
                           children: [
                             CustomText(
                               text: controller.getCompleted(todo),
-                              fontSize: 13,
+                              fontSize: 10,
                               textColor: ColorPalette.textColor.withValues(
                                 alpha: 0.7,
                               ),
                             ),
                             CustomText(
                               text: controller.getDeadline(todo),
-                              fontSize: 12,
+                              fontSize: 10,
                               textColor: ColorPalette.textColor.withValues(
                                 alpha: 0.5,
                               ),
@@ -131,6 +131,7 @@ class HistoryPage extends StatelessWidget {
                                 text: todo.kategori,
                                 textColor: ColorPalette.backgroundColor,
                                 fontWeight: FontWeight.bold,
+                                fontSize: 12,
                               ),
                             ),
                             IconButton(
