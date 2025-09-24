@@ -10,11 +10,13 @@ import 'package:kerjain/widgets/custom_txtfield.dart';
 import 'package:kerjain/widgets/custom_card.dart';
 
 class AddTodoPage extends StatelessWidget {
-  const AddTodoPage({super.key});
+  AddTodoPage({super.key});
+
+  final addTodoController = Get.find<AddTodoController>();
 
   @override
   Widget build(BuildContext context) {
-    final AddTodoController addTodoController = Get.find<AddTodoController>();
+    
 
     return Scaffold(
       backgroundColor: ColorPalette.backgroundColor,

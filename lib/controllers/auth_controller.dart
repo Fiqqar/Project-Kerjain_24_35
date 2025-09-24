@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kerjain/routes/routes.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController extends GetxController {
   final String email = 'kerjain@gmail.com';
@@ -11,15 +12,16 @@ class AuthController extends GetxController {
 
   var isPasswordHidden = true.obs;
 
-  void login() {
+  login() async {
     if (emailController.text == email && passController.text == pass ) {
+      final pref = await SharedPreferences.getInstance();
+      await pref.setString('Email', emailController.text.toString());
       Get.snackbar('Berhasil', 'Login Berhasil!');
       Get.offNamed(AppRoutes.bottomNav);
   
     } 
     else {
       Get.snackbar('Error', 'Email atau Password salah!');
-      emailController.clear();
       passController.clear();
     }
   }

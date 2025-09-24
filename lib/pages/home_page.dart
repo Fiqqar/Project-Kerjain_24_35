@@ -10,7 +10,7 @@ import 'package:kerjain/controllers/todo_controller.dart';
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  final TodoController todoController = Get.find<TodoController>();
+  final todoController = Get.find<TodoController>();
 
   @override
   Widget build(BuildContext context) {

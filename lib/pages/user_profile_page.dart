@@ -10,7 +10,7 @@ import 'package:kerjain/widgets/custom_text.dart';
 class UserProfilePage extends StatelessWidget {
   UserProfilePage({super.key});
 
-  final UserProfileController profileController =
+  final profileController =
       Get.find<UserProfileController>();
 
   @override
