@@ -8,7 +8,7 @@ import 'package:kerjain/controllers/todo_controller.dart';
 class HistoryPage extends StatelessWidget {
   HistoryPage({super.key});
 
-  final TodoController controller = Get.find<TodoController>();
+  final controller = Get.find<TodoController>();
 
   @override
   Widget build(BuildContext context) {

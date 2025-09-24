@@ -14,7 +14,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Kerjain',
-      initialRoute: AppRoutes.login,
+      initialRoute: AppRoutes.splashPage,
       getPages: AppPage.pages,
     );
   }

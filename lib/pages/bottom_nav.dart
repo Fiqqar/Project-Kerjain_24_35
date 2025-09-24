@@ -7,7 +7,7 @@ import 'package:kerjain/widgets/custom_card.dart';
 class BottomNav extends StatelessWidget {
   BottomNav({super.key});
 
-  final BottomNavController bottomNavController =
+  final bottomNavController =
       Get.find<BottomNavController>();
 
   @override
