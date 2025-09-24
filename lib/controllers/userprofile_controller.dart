@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class UserProfileController extends GetxController {
   logout() async {
     final pref = await SharedPreferences.getInstance();
-    await pref.remove('Username');
+    await pref.remove('Email');
     Get.offAllNamed(AppRoutes.splashPage);
   }
 }

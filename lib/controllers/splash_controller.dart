@@ -11,7 +11,7 @@ class SplashController extends GetxController {
 
   checkLogin() async {
     final pref = await SharedPreferences.getInstance();
-    if(pref.getString('Username') != null)  {
+    if(pref.getString('Email') != null)  {
       await Future.delayed(Duration(seconds: 3));
       Get.offAllNamed(AppRoutes.bottomNav);
     } else {
