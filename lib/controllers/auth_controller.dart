@@ -6,11 +6,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthController extends GetxController {
   final String email = 'kerjain@gmail.com';
   final String pass = 'kerjain123';
+  var isMobile = true.obs;
 
   final emailController = TextEditingController();
   final passController = TextEditingController();
 
   var isPasswordHidden = true.obs;
+
+  void updateLayout(BoxConstraints constraints) {
+    isMobile.value = constraints.maxWidth < 600;
+  }
 
   login() async {
     if (emailController.text == email && passController.text == pass ) {

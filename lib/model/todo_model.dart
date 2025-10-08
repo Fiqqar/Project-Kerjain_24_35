@@ -1,4 +1,5 @@
 class TodoModel {
+  final int? id;
   final String namaTodo;
   final String deskripsiTodo;
   final String kategori;
@@ -7,6 +8,7 @@ class TodoModel {
   DateTime? deadline;
 
   TodoModel({
+    this.id,
     required this.namaTodo,
     required this.deskripsiTodo,
     required this.kategori,

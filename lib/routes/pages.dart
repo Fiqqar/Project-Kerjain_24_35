@@ -9,6 +9,8 @@ import 'package:kerjain/pages/bottom_nav.dart';
 import 'package:kerjain/pages/history_page.dart';
 import 'package:kerjain/pages/home_page.dart';
 import 'package:kerjain/pages/login_page.dart';
+import 'package:kerjain/pages/responsive/login_responsive.dart';
+import 'package:kerjain/pages/responsive/user_profile_responsive.dart';
 import 'package:kerjain/pages/splash_screen_page.dart';
 import 'package:kerjain/pages/user_profile_page.dart';
 import 'package:kerjain/routes/routes.dart';
@@ -22,5 +24,7 @@ class AppPage{
     GetPage(name: AppRoutes.bottomNav, page: () =>  BottomNav(), binding: BottomNavBinding()),
     GetPage(name: AppRoutes.login, page: () =>  LoginPage(), binding: AuthBinding()),
     GetPage(name: AppRoutes.splashPage, page: () =>  SplashScreenPage(), binding: SplashBinding()),
+    GetPage(name: AppRoutes.loginResp, page: () => LoginResponsive(), binding: AuthBinding()),
+    GetPage(name: AppRoutes.userProfileResp, page: () => UserProfileResponsive(), binding: BottomNavBinding())
   ];
 }

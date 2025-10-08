@@ -16,7 +16,7 @@ class SplashController extends GetxController {
       Get.offAllNamed(AppRoutes.bottomNav);
     } else {
       await Future.delayed(Duration(seconds: 3));
-      Get.offAllNamed(AppRoutes.login);
+      Get.offAllNamed(AppRoutes.loginResp);
     }
   }
 }
