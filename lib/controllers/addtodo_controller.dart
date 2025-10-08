@@ -19,7 +19,7 @@ class AddTodoController extends GetxController {
     selectedKategori.value = kategori;
   }
 
-  void addTodo() {
+  Future<void> addTodo() async {
     if (namaController.text.isEmpty || selectedKategori.value.isEmpty) {
       Get.snackbar(
         "Error",
@@ -29,19 +29,23 @@ class AddTodoController extends GetxController {
       return;
     }
 
-    todoController.todos.add(
-      TodoModel(
-        namaTodo: namaController.text,
-        deskripsiTodo: deskripsiController.text,
-        kategori: selectedKategori.value,
-        deadline: deadline.value,
-      ),
+    final todo = TodoModel(
+      namaTodo: namaController.text,
+      deskripsiTodo: deskripsiController.text,
+      kategori: selectedKategori.value,
+      deadline: deadline.value,
     );
+
+    await todoController.addTodo(todo);
+
     Get.snackbar(
       "Berhasil",
       "Kegiatan berhasil ditambahkan!",
       snackPosition: SnackPosition.BOTTOM,
     );
+    
+    clearFields();
+    
     Get.toNamed(AppRoutes.bottomNav);
   }
 
@@ -49,6 +53,7 @@ class AddTodoController extends GetxController {
     namaController.clear();
     deskripsiController.clear();
     selectedKategori.value = "";
+    deadline.value = null;
     deadlineController.clear();
   }
 
@@ -56,7 +61,6 @@ class AddTodoController extends GetxController {
   void onClose() {
     namaController.dispose();
     deskripsiController.dispose();
-    selectedKategori.value = "";
     deadlineController.dispose();
     super.onClose();
   }
