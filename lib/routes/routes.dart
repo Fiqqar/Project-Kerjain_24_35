@@ -8,4 +8,8 @@ class AppRoutes {
   static const String splashPage = '/splashpage';
   static const String loginResp = '/loginresponsive';
   static const String userProfileResp = '/userprofileresponsive';
+  static const String homeResp = '/homeresponsive';
+  static const String historyResp = '/historyresponsive';
+  static const String addWide = '/add-todo-widescreen';
+  static const String addResponsive = '/addresponsive';
 }

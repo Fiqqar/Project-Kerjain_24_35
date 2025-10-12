@@ -21,7 +21,7 @@ class BottomNav extends StatelessWidget {
 
         bottomNavigationBar: CustomCard(
           color: ColorPalette.primaryColor,
-          topRadius: 20,
+          topRadius: 0,
           bottomRadius: 0,
           hasShadow: true,
           padding: EdgeInsets.zero,

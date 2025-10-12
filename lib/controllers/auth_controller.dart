@@ -12,9 +12,8 @@ class AuthController extends GetxController {
   final passController = TextEditingController();
 
   var isPasswordHidden = true.obs;
-
   void updateLayout(BoxConstraints constraints) {
-    isMobile.value = constraints.maxWidth < 600;
+        isMobile.value = constraints.maxWidth < 600;
   }
 
   login() async {
