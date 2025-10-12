@@ -6,6 +6,7 @@ import 'package:kerjain/widgets/custom_button.dart';
 import 'package:kerjain/widgets/custom_card.dart';
 import 'package:kerjain/widgets/custom_text.dart';
 import 'package:kerjain/controllers/todo_controller.dart';
+import 'package:kerjain/widgets/dialog.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -78,7 +79,6 @@ class HomePage extends StatelessWidget {
                   ),
                 );
               }
-
               return ListView.builder(
                 padding: EdgeInsets.all(10),
                 itemCount: todoController.todos.length,
@@ -164,9 +164,22 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                             IconButton(
-                              icon: Icon(Icons.delete, color: Colors.red),
+                              icon: Icon(Icons.delete, color: ColorPalette.r),
                               onPressed: () {
-                                todoController.deleteTodo(index);
+                                todoController.deleteTodo(todo.id!);
+                              },
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.edit, color: ColorPalette.o),
+                              onPressed: () {
+                                todoController.startEditing(
+                                  todoController.todos[index],
+                                );
+                                Get.dialog(
+                                  EditKegiatanDialog(
+                                    todoController: todoController,
+                                  ),
+                                );
                               },
                             ),
                           ],

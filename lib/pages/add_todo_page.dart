@@ -21,6 +21,7 @@ class AddTodoPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorPalette.backgroundColor,
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
         title: CustomText(
           text: "Tambah Kegiatan",
           textColor: ColorPalette.backgroundColor,

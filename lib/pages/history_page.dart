@@ -4,11 +4,12 @@ import 'package:kerjain/colors/app_colors.dart';
 import 'package:kerjain/widgets/custom_card.dart';
 import 'package:kerjain/widgets/custom_text.dart';
 import 'package:kerjain/controllers/todo_controller.dart';
+import 'package:kerjain/model/todo_model.dart';
 
 class HistoryPage extends StatelessWidget {
   HistoryPage({super.key});
 
-  final controller = Get.find<TodoController>();
+  final TodoController controller = Get.find<TodoController>();
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,12 @@ class HistoryPage extends StatelessWidget {
             topRadius: 0,
             bottomRadius: 15,
             hasShadow: false,
-            padding: EdgeInsets.only(top: 25, left: 16, right: 16, bottom: 16),
+            padding: const EdgeInsets.only(
+              top: 25,
+              left: 16,
+              right: 16,
+              bottom: 16,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,7 +36,7 @@ class HistoryPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(bottom: 4),
+                      margin: const EdgeInsets.only(bottom: 4),
                       child: CustomText(
                         text: "History",
                         fontSize: 20,
@@ -38,41 +44,37 @@ class HistoryPage extends StatelessWidget {
                         textColor: ColorPalette.backgroundColor,
                       ),
                     ),
-
                     CustomText(
                       text: "Riwayat dari kegiatanmu",
                       fontSize: 14,
-                      textColor: ColorPalette.backgroundColor.withValues(
-                        alpha: 0.7,
-                      ),
+                      textColor: ColorPalette.backgroundColor.withAlpha(180),
                     ),
                   ],
                 ),
               ],
             ),
           ),
-
           Expanded(
             child: Obx(() {
-              final historyTodos = controller.history;
+              final List<TodoModel> historyTodos = controller.history;
 
               if (historyTodos.isEmpty) {
                 return Center(
                   child: CustomText(
                     text: "Belum ada kegiatan di history",
                     fontSize: 14,
-                    textColor: ColorPalette.textColor.withValues(alpha: 0.7),
+                    textColor: ColorPalette.textColor.withAlpha(180),
                   ),
                 );
               }
 
               return ListView.builder(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 itemCount: historyTodos.length,
                 itemBuilder: (context, index) {
                   final todo = historyTodos[index];
                   return Padding(
-                    padding: EdgeInsets.symmetric(vertical: 6),
+                    padding: const EdgeInsets.symmetric(vertical: 6),
                     child: CustomCard(
                       padding: EdgeInsets.zero,
                       hasShadow: false,
@@ -80,13 +82,14 @@ class HistoryPage extends StatelessWidget {
                       topRadius: 15,
                       bottomRadius: 15,
                       child: ListTile(
-                        contentPadding: EdgeInsets.symmetric(
+                        contentPadding: const EdgeInsets.symmetric(
                           horizontal: 6,
                           vertical: 2,
                         ),
-                        leading: Icon(
+                        leading: const Icon(
                           Icons.history,
-                          color: ColorPalette.backgroundColor,
+                          color: Colors
+                              .white,
                         ),
                         title: CustomText(
                           text: controller.getTodoName(todo),
@@ -99,16 +102,12 @@ class HistoryPage extends StatelessWidget {
                             CustomText(
                               text: controller.getCompleted(todo),
                               fontSize: 10,
-                              textColor: ColorPalette.textColor.withValues(
-                                alpha: 0.7,
-                              ),
+                              textColor: ColorPalette.textColor.withAlpha(180),
                             ),
                             CustomText(
                               text: controller.getDeadline(todo),
                               fontSize: 10,
-                              textColor: ColorPalette.textColor.withValues(
-                                alpha: 0.5,
-                              ),
+                              textColor: ColorPalette.textColor.withAlpha(140),
                               fontWeight: FontWeight.bold,
                             ),
                           ],
@@ -117,7 +116,7 @@ class HistoryPage extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Container(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                 horizontal: 8,
                                 vertical: 4,
                               ),

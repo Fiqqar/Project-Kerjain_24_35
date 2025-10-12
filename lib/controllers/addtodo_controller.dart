@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:kerjain/controllers/todo_controller.dart';
 import 'package:kerjain/model/todo_model.dart';
@@ -14,6 +15,13 @@ class AddTodoController extends GetxController {
   var deadline = Rxn<DateTime>();
 
   final TodoController todoController = Get.find<TodoController>();
+
+  var isMobile = true.obs;
+  void updateLayout(BoxConstraints constraints) {
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      isMobile.value = constraints.maxWidth < 600;
+    });
+  }
 
   void setKategori(String kategori) {
     selectedKategori.value = kategori;
@@ -43,9 +51,9 @@ class AddTodoController extends GetxController {
       "Kegiatan berhasil ditambahkan!",
       snackPosition: SnackPosition.BOTTOM,
     );
-    
+
     clearFields();
-    
+
     Get.toNamed(AppRoutes.bottomNav);
   }
 
