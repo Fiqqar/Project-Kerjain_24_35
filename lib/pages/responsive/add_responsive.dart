@@ -18,5 +18,6 @@ class AddResponsive extends StatelessWidget {
         return Obx(() => controller.isMobile.value ? AddTodoPage() : AddTodoWidescreenPage());
       }),
     );
+    //ya
   }
 }
