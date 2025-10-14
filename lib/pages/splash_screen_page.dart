@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kerjain/colors/app_colors.dart';
 import 'package:kerjain/controllers/splash_controller.dart';
-import 'package:kerjain/widgets/custom_text.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class SplashScreenPage extends StatelessWidget {
   SplashScreenPage({super.key});
@@ -12,7 +13,7 @@ class SplashScreenPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: CustomText(text: "Kerjain Loading...", fontSize: 20, fontWeight: FontWeight.bold),
+        child: LoadingAnimationWidget.inkDrop(color: ColorPalette.primaryColor, size: 100),
       ),
     );
   }
